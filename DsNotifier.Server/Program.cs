@@ -28,6 +28,12 @@ builder.Services.AddMassTransit(x =>
 {
     //x.AddConsumers(Assembly.GetExecutingAssembly()); //todo doesnt work
     x.AddConsumer<DsLauncherPurchasedConsumer>();
+    x.AddConsumer<DsLauncherSubscribedConsumer>();
+    x.AddConsumer<DsLauncherUnsubscribedConsumer>();
+    x.AddConsumer<DsLauncherBecameDeveloperConsumer>();
+    x.AddConsumer<DsCoreRegisteredConsumer>();
+    x.AddConsumer<DsCoreVerificationCodeConsumer>();
+    x.AddConsumer<DsCoreToppedUpConsumer>();
     x.AddConsumer<SendEmailConsumer>();
     var options = builder.Configuration.GetSection(MassTransitOptions.SECTION).Get<MassTransitOptions>() ?? throw new("No mass transit options");
 
