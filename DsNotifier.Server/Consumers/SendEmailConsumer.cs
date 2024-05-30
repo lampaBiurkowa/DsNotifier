@@ -1,17 +1,24 @@
 
+using DsNotifier.Server.Options;
 using FluentEmail.Core;
 using MassTransit;
+using Microsoft.Extensions.Options;
 
 namespace DsNotifier.Server.Consumers;
 
-class SendEmailConsumer(IFluentEmail fluentEmail) : IConsumer<SendEmailEvent>
+class SendEmailConsumer(IFluentEmail fluentEmail, IOptions<EmailOptions> options) : IConsumer<SendEmailEvent>
 {
+    readonly EmailOptions options = options.Value;
+
     public async Task Consume(ConsumeContext<SendEmailEvent> ctx)
     {
         var msg = ctx.Message;
-        await fluentEmail.To("mrocznaklawaitura@gmail.com")//msg.RecipentEmail)
-            .Subject("short announcement")
-            .Body(msg.BodyHtml)
+        if (options.SendToEmailOverride != null)
+            msg.RecipentEmail = options.SendToEmailOverride;
+
+        await fluentEmail.To(msg.RecipentEmail)
+            .Subject(msg.Subject)
+            .Body(msg.BodyHtml, true)
             .SendAsync();
     }
 }

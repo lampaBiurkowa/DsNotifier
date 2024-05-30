@@ -24,6 +24,7 @@ class DsLauncherPurchasedConsumer(DsCoreClientFactory dsCore, DsLauncherClientFa
 
         await ctx.Publish(new SendEmailEvent
         {
+            Subject = "Product purchased",
             BodyHtml = bodyHtml,
             RecipentEmail = userTask.Result.Email
         }, ctx.CancellationToken);

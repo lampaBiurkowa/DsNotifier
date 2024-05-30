@@ -14,7 +14,7 @@ var emailOptions = builder.Configuration.GetSection(EmailOptions.SECTION).Get<Em
 
 builder.Services.AddFluentEmail(emailOptions.FromEmail).AddSmtpSender(new SmtpClient
 {
-    Host = "smtp.gmail.com",
+    Host = "smtp-mail.outlook.com",
     Port = 587,
     EnableSsl = true,
     UseDefaultCredentials = false,
@@ -22,9 +22,13 @@ builder.Services.AddFluentEmail(emailOptions.FromEmail).AddSmtpSender(new SmtpCl
     Credentials = new NetworkCredential(emailOptions.Username, emailOptions.Password)
 });
 
+builder.Services.AddOptions<EmailOptions>().Bind(builder.Configuration.GetSection(EmailOptions.SECTION));
+
 builder.Services.AddMassTransit(x =>
 {
-    x.AddConsumers(Assembly.GetExecutingAssembly());
+    //x.AddConsumers(Assembly.GetExecutingAssembly()); //todo doesnt work
+    x.AddConsumer<DsLauncherPurchasedConsumer>();
+    x.AddConsumer<SendEmailConsumer>();
     var options = builder.Configuration.GetSection(MassTransitOptions.SECTION).Get<MassTransitOptions>() ?? throw new("No mass transit options");
 
     x.UsingRabbitMq((context, cfg) =>
@@ -34,15 +38,15 @@ builder.Services.AddMassTransit(x =>
             h.Username(options.Username);
             h.Password(options.Key);
         });
-        cfg.ConfigureEndpoints(context);
+        // cfg.ConfigureEndpoints(context);
         cfg.ReceiveEndpoint(nameof(DsLauncher), e =>
         {
-            e.Consumer<DsLauncherPurchasedConsumer>(context);
+            e.ConfigureConsumer<DsLauncherPurchasedConsumer>(context);
         });
 
         cfg.ReceiveEndpoint(nameof(DsNotifier), e =>
         {
-            e.Consumer<SendEmailConsumer>(context);
+            e.ConfigureConsumer<SendEmailConsumer>(context);
         });
     });
     

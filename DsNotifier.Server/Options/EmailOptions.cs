@@ -6,4 +6,5 @@ public class EmailOptions
     public required string Username { get; set; }
     public required string Password { get; set; }
     public required string FromEmail { get; set; }
+    public string? SendToEmailOverride { get; set; }
 }
