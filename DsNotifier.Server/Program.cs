@@ -38,10 +38,20 @@ builder.Services.AddMassTransit(x =>
             h.Username(options.Username);
             h.Password(options.Key);
         });
-        // cfg.ConfigureEndpoints(context);
+
         cfg.ReceiveEndpoint(nameof(DsLauncher), e =>
         {
             e.ConfigureConsumer<DsLauncherPurchasedConsumer>(context);
+            e.ConfigureConsumer<DsLauncherSubscribedConsumer>(context);
+            e.ConfigureConsumer<DsLauncherUnsubscribedConsumer>(context);
+            e.ConfigureConsumer<DsLauncherBecameDeveloperConsumer>(context);
+        });
+
+        cfg.ReceiveEndpoint(nameof(DsCore), e =>
+        {
+            e.ConfigureConsumer<DsCoreRegisteredConsumer>(context);
+            e.ConfigureConsumer<DsCoreVerificationCodeConsumer>(context);
+            e.ConfigureConsumer<DsCoreToppedUpConsumer>(context);
         });
 
         cfg.ReceiveEndpoint(nameof(DsNotifier), e =>
