@@ -34,7 +34,7 @@ builder.Services.AddMassTransit(x =>
     x.AddConsumer<DsCoreRegisteredConsumer>();
     x.AddConsumer<DsCoreVerificationCodeConsumer>();
     x.AddConsumer<DsCoreToppedUpConsumer>();
-    x.AddConsumer<SendEmailConsumer>();
+    x.AddConsumer<DsNotifierSendEmailConsumer>();
     var options = builder.Configuration.GetSection(MassTransitOptions.SECTION).Get<MassTransitOptions>() ?? throw new("No mass transit options");
 
     x.UsingRabbitMq((context, cfg) =>
@@ -62,7 +62,7 @@ builder.Services.AddMassTransit(x =>
 
         cfg.ReceiveEndpoint(nameof(DsNotifier), e =>
         {
-            e.ConfigureConsumer<SendEmailConsumer>(context);
+            e.ConfigureConsumer<DsNotifierSendEmailConsumer>(context);
         });
     });
     

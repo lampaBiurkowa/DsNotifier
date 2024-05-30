@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 
 namespace DsNotifier.Server.Consumers;
 
-class SendEmailConsumer(IFluentEmail fluentEmail, IOptions<EmailOptions> options) : IConsumer<SendEmailEvent>
+class DsNotifierSendEmailConsumer(IFluentEmail fluentEmail, IOptions<EmailOptions> options) : IConsumer<SendEmailEvent>
 {
     readonly EmailOptions options = options.Value;
 
