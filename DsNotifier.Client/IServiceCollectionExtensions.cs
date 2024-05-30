@@ -1,6 +1,8 @@
+using DibBase.Infrastructure;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Event = DibBase.Models.Event;
 
 namespace DsNotifier.Client;
 
@@ -11,6 +13,8 @@ public static class IServiceCollectionExtensions
         services.AddMassTransit(x =>
         {
             services.AddScoped<IDsNotifierClient, DsNotifierMassTransitClient>();
+            services.AddScoped<Repository<Event>>();
+            services.AddHostedService<EventService>();
             
             var options = configuration.GetSection(DsNotifierOptions.SECTION).Get<DsNotifierOptions>() ?? throw new("No DsNotifier options");
             x.UsingRabbitMq((context, cfg) =>
