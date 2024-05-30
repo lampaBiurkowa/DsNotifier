@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 600px;
+            border: 1px solid #e4e4e4;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .footer {
+            text-align: center;
+            color: #888888;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 0;
+            font-size: 16px;
+            color: white;
+            background-color: #4CAF50;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .unsubscribe {
+            color: #888888;
+            font-size: 12px;
+        }
+        .unsubscribe a {
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Notification</h1>
+        </div>
+
+        <div class="content">
+            <!-- Purchase Notification -->
+            <h2>Thank You for Your Purchase!</h2>
+            <p>Dear [Customer Name],</p>
+            <p>Thank you for purchasing [Product Name]. We hope you enjoy your new purchase!</p>
+            <p><a href="#" class="button">View Your Order</a></p>
+
+            <!-- Subscription Notification -->
+            <h2>You Have Subscribed Successfully!</h2>
+            <p>Dear [Customer Name],</p>
+            <p>Thank you for subscribing to our service. You will now receive the latest updates and offers.</p>
+            <p><a href="#" class="button">Manage Your Subscription</a></p>
+
+            <!-- Unsubscription Notification -->
+            <h2>You Have Unsubscribed</h2>
+            <p>Dear [Customer Name],</p>
+            <p>We are sorry to see you go. You have successfully unsubscribed from our service. If you change your mind, you can always <a href="#">subscribe again</a>.</p>
+            <p><a href="#" class="button">Re-subscribe</a></p>
+
+            <!-- Registration Notification -->
+            <h2>Welcome to [Service Name]!</h2>
+            <p>Dear [Customer Name],</p>
+            <p>Thank you for registering with us. We are excited to have you on board.</p>
+            <p><a href="#" class="button">Get Started</a></p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 [Your Company]. All rights reserved.</p>
+            <p class="unsubscribe">If you wish to unsubscribe, click <a href="#">here</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
