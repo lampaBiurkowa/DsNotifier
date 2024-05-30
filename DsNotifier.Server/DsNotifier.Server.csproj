@@ -30,9 +30,5 @@
     <PackageReference Include="Supabase.Storage" Version="2.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
-
-  <Target Name="GenerateClientCode" BeforeTargets="AfterBuild">
-    <Exec Command="nswag run nswag.json /variables:Configuration=$(Configuration)" />
-  </Target>
-
+  
 </Project>

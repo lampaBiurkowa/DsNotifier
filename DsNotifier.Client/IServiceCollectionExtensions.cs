@@ -10,7 +10,7 @@ public static class IServiceCollectionExtensions
     {
         services.AddMassTransit(x =>
         {
-            services.AddSingleton<IDsNotifierClient, DsNotifierMassTransitClient>();
+            services.AddScoped<IDsNotifierClient, DsNotifierMassTransitClient>();
             
             var options = configuration.GetSection(DsNotifierOptions.SECTION).Get<DsNotifierOptions>() ?? throw new("No DsNotifier options");
             x.UsingRabbitMq((context, cfg) =>

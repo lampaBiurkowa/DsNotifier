@@ -27,7 +27,7 @@ builder.Services.AddMassTransit(x =>
     x.AddConsumers(Assembly.GetExecutingAssembly());
     var options = builder.Configuration.GetSection(MassTransitOptions.SECTION).Get<MassTransitOptions>() ?? throw new("No mass transit options");
 
-    x.UsingRabbitMq((context,cfg) =>
+    x.UsingRabbitMq((context, cfg) =>
     {
         cfg.Host(options.Url, h => 
         {
