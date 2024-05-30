@@ -9,9 +9,9 @@
   <ItemGroup>
     <PackageReference Include="DibBaseApi" Version="0.0.13" />
     <PackageReference Include="DotLiquid" Version="2.2.692" />
-    <PackageReference Include="DsCore.ApiClient" Version="1.0.24" />
-    <PackageReference Include="DsLauncher.ApiClient" Version="1.0.25" />
-    <PackageReference Include="DsLauncher.Events" Version="1.0.25" />
+    <PackageReference Include="DsCore.ApiClient" Version="1.0.28" />
+    <PackageReference Include="DsLauncher.ApiClient" Version="1.0.27" />
+    <PackageReference Include="DsLauncher.Events" Version="1.0.27" />
     <PackageReference Include="FluentEmail.Core" Version="3.0.2" />
     <PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="8.2.2" />
@@ -29,6 +29,7 @@
     <PackageReference Include="Supabase" Version="1.0.3" />
     <PackageReference Include="Supabase.Storage" Version="2.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="DsCore.Events" Version="1.0.28" />
   </ItemGroup>
   
 </Project>

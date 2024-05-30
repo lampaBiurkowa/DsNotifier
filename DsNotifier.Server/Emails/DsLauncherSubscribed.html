@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Email</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 600px;
+            border: 1px solid #e4e4e4;
+        }
+
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .content {
+            margin: 20px 0;
+        }
+
+        .footer {
+            text-align: center;
+            color: #888888;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Subscribe Succeeded</h1>
+        </div>
+
+        <div class="content">
+            <h2>Thank You for Your Subscription!</h2>
+            <p>Dear {{UserName}},</p>
+            <p>Thank you for subscribing {{DeveloperName}}. We hope you enjoy your new subscription!</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 DibrySoft Inc. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>
