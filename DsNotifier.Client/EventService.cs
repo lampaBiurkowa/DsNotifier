@@ -39,8 +39,15 @@ class EventService(IServiceProvider sp) : BackgroundService
             var obj = JsonConvert.DeserializeObject(e.Payload, type);
             if (obj != null)
             {
-                await client.SendGeneric(obj, type, ct);
-                e.IsPublished = true;
+                try
+                {
+                    await client.SendGeneric(obj, type, ct);
+                    e.IsPublished = true;
+                }
+                catch
+                {
+                    //jakis warn
+                }
             }
         }
         else
