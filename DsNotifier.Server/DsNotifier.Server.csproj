@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ContainerImageName>ds-notifier</ContainerImageName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +31,8 @@
     <PackageReference Include="Supabase.Storage" Version="2.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="DsCore.Events" Version="1.0.28" />
+    <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
+    <PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.100" />
   </ItemGroup>
   
 </Project>
