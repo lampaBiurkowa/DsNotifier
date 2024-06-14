@@ -10,15 +10,15 @@ class DsNotifierSendEmailConsumer(IFluentEmail fluentEmail, IOptions<EmailOption
 {
     readonly EmailOptions options = options.Value;
 
-    public async Task Consume(ConsumeContext<SendEmailEvent> ctx)
+    public Task Consume(ConsumeContext<SendEmailEvent> ctx)
     {
         var msg = ctx.Message;
         if (options.SendToEmailOverride != null)
             msg.RecipentEmail = options.SendToEmailOverride;
 
-        await fluentEmail.To(msg.RecipentEmail)
+        fluentEmail.To(msg.RecipentEmail)
             .Subject(msg.Subject)
             .Body(msg.BodyHtml, true)
-            .SendAsync();
+            .Send();
     }
 }
