@@ -34,5 +34,10 @@
     <PackageReference Include="System.IO.FileSystem.Primitives" Version="4.3.0" />
     <PackageReference Include="Microsoft.NET.Build.Containers" Version="8.0.100" />
   </ItemGroup>
-  
+
+  <ItemGroup>
+    <None Update="Emails\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
