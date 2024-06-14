@@ -12,7 +12,7 @@ builder.Configuration.AddDsCore(builder.Services);
 builder.Configuration.AddDsLauncher(builder.Services);
 var emailOptions = builder.Configuration.GetSection(EmailOptions.SECTION).Get<EmailOptions>() ?? throw new("No email options");
 
-builder.Services.AddFluentEmail(emailOptions.FromEmail).AddSmtpSender(new SmtpClient
+builder.Services.AddFluentEmail(emailOptions.FromEmail).AddSmtpSender(() => new SmtpClient
 {
     Host = "smtp-mail.outlook.com",
     Port = 587,
