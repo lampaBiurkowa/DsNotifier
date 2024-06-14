@@ -20,5 +20,7 @@ class DsNotifierSendEmailConsumer(IFluentEmail fluentEmail, IOptions<EmailOption
             .Subject(msg.Subject)
             .Body(msg.BodyHtml, true)
             .Send();
+
+        return Task.CompletedTask;
     }
 }
